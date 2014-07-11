@@ -11,5 +11,7 @@ A segunda parte apresenta a implementação de serviços REST para realização 
 Descrição do conteúdo:
 
 apresentacao - Apresentações criadas para o workshop.
+
 design - Contém a modelagem do exemplo. O arquivo enquete.eap contém a modelagem feita no Entreprise Architect e pode ser aberto para visualização com o EALite. Para comodidade os diagramas foram exportados para png e incluídos juntamente com o eap.
+
 source - Implementação do exemplo de enquetes em JAVA utilizando tanto JAX-RS quanto SpringMVC.
