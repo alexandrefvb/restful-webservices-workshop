@@ -10,7 +10,7 @@ A segunda parte apresenta a implementação de serviços REST para realização 
 
 Descrição do conteúdo:
 
-apresentacao - Apresentações criadas para o workshop.
+apresentacao - Apresentações criadas para o workshop. As apresentações estão no formato ODP e podem ser visualizadas com o LibreOffice. Há também uma versão em pdf para visualização.
 
 design - Contém a modelagem do exemplo. O arquivo enquete.eap contém a modelagem feita no Entreprise Architect e pode ser aberto para visualização com o EALite. Para comodidade os diagramas foram exportados para png e incluídos juntamente com o eap.
 
