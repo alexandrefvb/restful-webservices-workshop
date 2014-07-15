@@ -25,9 +25,7 @@ public class EnqueteExceptionMapper implements ExceptionMapper<Exception> {
 	public EnqueteExceptionMapper() {
 		statusMap.put(EnqueteAtivaException.class, Status.CONFLICT);
 		statusMap.put(EnqueteInativaException.class, Status.CONFLICT);
-
 		statusMap.put(EnqueteNaoEncontradaException.class, Status.NOT_FOUND);
-
 		statusMap.put(EnqueteInvalidaException.class, Status.BAD_REQUEST);
 		statusMap.put(OpcaoNaoEncontradaException.class, Status.BAD_REQUEST);
 	}
@@ -45,5 +43,4 @@ public class EnqueteExceptionMapper implements ExceptionMapper<Exception> {
 		Status status = statusMap.get(exception.getClass());
 		return (status != null) ? status : Status.INTERNAL_SERVER_ERROR;
 	}
-
 }
