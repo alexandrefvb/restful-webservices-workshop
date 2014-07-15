@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -33,6 +34,9 @@ public class EnqueteExceptionMapper implements ExceptionMapper<Exception> {
 
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response toResponse(Exception exception) {
+		if (exception instanceof WebApplicationException) {
+			return ((WebApplicationException) exception).getResponse();
+		}
 		return Response.status(statusFor(exception))
 				.entity(exception.getMessage()).build();
 	}

@@ -118,13 +118,13 @@ public class Enquete {
 	 */
 	public void validate() throws EnqueteInvalidaException {
 		throwIf(this.pergunta == null || "".equals(this.pergunta.trim()),
-				"A pergunta da enquete não foi informada ou está em branco.");
+				"A pergunta da enquete n\u00e3o foi informada ou est\u00e1 em branco.");
 		this.pergunta = this.pergunta.trim();
 		throwIf(this.opcoes == null || this.opcoes.size() < 2,
-				"A enquete deve ter pelo menos duas opções.");
+				"A enquete deve ter pelo menos duas op\u00e7\u00f5es.");
 		throwIf(this.inicio == null,
-				"A data de início da enquete não foi informada.");
-		throwIf(this.fim == null, "A data de fim da enquete não foi informada.");
+				"A data de in\u00edcio da enquete n\u00e3o foi informada.");
+		throwIf(this.fim == null, "A data de fim da enquete n\u00e3o foi informada.");
 
 		for (Opcao o : this.opcoes) {
 			o.validate();

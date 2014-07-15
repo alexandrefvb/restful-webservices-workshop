@@ -23,7 +23,7 @@ public class EnqueteResource extends Resource {
 		String href = URI + "/" + enquete.getId();
 		add(new Link(href));
 		if (enquete.isActive()) {
-			add(new Link("votar", href + "/voto", Method.PUT));
+			add(new Link("votar", href + "/voto", Method.POST));
 		} else {
 			add(new Link("apagar", href, Method.DELETE));
 		}

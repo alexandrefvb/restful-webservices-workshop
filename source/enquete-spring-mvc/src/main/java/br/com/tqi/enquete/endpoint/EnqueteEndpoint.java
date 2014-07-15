@@ -47,12 +47,14 @@ public class EnqueteEndpoint {
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id)
 			throws EnqueteNaoEncontradaException, EnqueteAtivaException {
 		this.repository.delete(id);
 	}
 
 	@RequestMapping(value = "{id}/voto", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void vote(@PathVariable("id") Long id, @RequestBody Opcao opcao)
 			throws EnqueteNaoEncontradaException, EnqueteInativaException,
 			OpcaoNaoEncontradaException {

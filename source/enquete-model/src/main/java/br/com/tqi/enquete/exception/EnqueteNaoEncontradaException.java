@@ -5,7 +5,7 @@ public class EnqueteNaoEncontradaException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public EnqueteNaoEncontradaException() {
-		super("Enquete não encontrada!");
+		super("Enquete n\u00e3o encontrada!");
 	}
 
 }
