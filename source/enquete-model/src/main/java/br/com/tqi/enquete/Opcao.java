@@ -43,5 +43,7 @@ public class Opcao {
 		throwIf(this.texto == null || "".equals(this.texto.trim()),
 				"Uma das opções foi informada sem texto ou com o texto em branco.");
 		this.texto = this.texto.trim();
+		// Zera o número de votos da opção (caso o cliente tenha informado um valor diferente de zero)
+		this.votos = 0L;
 	}
 }
