@@ -15,3 +15,18 @@ apresentacao - Apresentações criadas para o workshop. As apresentações estã
 design - Contém a modelagem do exemplo. O arquivo enquete.eap contém a modelagem feita no Entreprise Architect e pode ser aberto para visualização com o EALite. Para comodidade os diagramas foram exportados para png e incluídos juntamente com o eap.
 
 source - Implementação do exemplo de enquetes em JAVA utilizando tanto JAX-RS quanto SpringMVC.
+
+##Rodando os projetos
+
+Para rodar os projetos é necessário:
+* JDK 1.7
+* Maven 3.0+
+
+Antes de rodar os exemplos instale o módulo enquete-model rodando:
+```mvn clean install``` em source/enquete-model.
+
+Para rodar o exemplo JAX-RS:
+```mvn jetty:run``` em source/enquete-jax-rs.
+
+Para rodar o exemplo Spring MVC:
+```mvn jetty:run``` em source/enquete-spring-mvc.
