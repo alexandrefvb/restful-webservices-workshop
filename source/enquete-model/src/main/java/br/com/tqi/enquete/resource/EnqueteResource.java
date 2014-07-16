@@ -14,39 +14,40 @@ import br.com.tqi.resource.Resource;
  */
 public class EnqueteResource extends Resource {
 
-	public static final String URI = "/enquetes";
+    public static final String URI = "/enquetes";
 
-	private Enquete enquete;
+    private Enquete enquete;
 
-	public EnqueteResource(Enquete enquete) {
-		this.enquete = enquete;
-		String href = URI + "/" + enquete.getId();
-		add(new Link(href));
-		if (enquete.isActive()) {
-			add(new Link("votar", href + "/voto", Method.POST));
-		} else {
-			add(new Link("apagar", href, Method.DELETE));
-		}
+    public EnqueteResource(Enquete enquete) {
+	this.enquete = enquete;
+	String href = URI + "/" + enquete.getId();
+	add(new Link(href));
+	if (enquete.isActive()) {
+	    add(new Link("votar", href + "/voto", Method.POST));
+	} else {
+	    add(new Link("apagar", href, Method.DELETE));
 	}
 
-	public Long getId() {
-		return enquete.getId();
-	}
+    }
 
-	public String getPergunta() {
-		return enquete.getPergunta();
-	}
+    public Long getId() {
+	return enquete.getId();
+    }
 
-	public List<Opcao> getOpcoes() {
-		return enquete.getOpcoes();
-	}
+    public String getPergunta() {
+	return enquete.getPergunta();
+    }
 
-	public Date getInicio() {
-		return enquete.getInicio();
-	}
+    public List<Opcao> getOpcoes() {
+	return enquete.getOpcoes();
+    }
 
-	public Date getFim() {
-		return enquete.getFim();
-	}
+    public Date getInicio() {
+	return enquete.getInicio();
+    }
+
+    public Date getFim() {
+	return enquete.getFim();
+    }
 
 }
