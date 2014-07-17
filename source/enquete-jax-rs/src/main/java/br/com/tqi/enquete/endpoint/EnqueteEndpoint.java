@@ -25,44 +25,44 @@ import br.com.tqi.enquete.resource.EnquetesResource;
 @Path(EnqueteResource.URI)
 public class EnqueteEndpoint {
 
-	private EnqueteRepository repository = EnqueteRepository.getInstance();
+    private EnqueteRepository repository = EnqueteRepository.getInstance();
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public EnquetesResource findAll() {
-		return new EnquetesResource(this.repository.findAll());
-	}
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public EnquetesResource findAll() {
+	return new EnquetesResource(this.repository.findAll());
+    }
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response create(Enquete enquete) throws EnqueteInvalidaException {
-		this.repository.create(enquete);
-		return Response.status(Status.CREATED)
-				.entity(new EnqueteResource(enquete)).build();
-	}
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response create(Enquete enquete) throws EnqueteInvalidaException {
+	this.repository.create(enquete);
+	return Response.status(Status.CREATED)
+		.entity(new EnqueteResource(enquete)).build();
+    }
 
-	@GET
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public EnqueteResource get(@PathParam("id") Long id)
-			throws EnqueteNaoEncontradaException {
-		return new EnqueteResource(this.repository.find(id));
-	}
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public EnqueteResource get(@PathParam("id") Long id)
+	    throws EnqueteNaoEncontradaException {
+	return new EnqueteResource(this.repository.find(id));
+    }
 
-	@DELETE
-	@Path("{id}")
-	public void delete(@PathParam("id") Long id)
-			throws EnqueteNaoEncontradaException, EnqueteAtivaException {
-		this.repository.delete(id);
-	}
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") Long id)
+	    throws EnqueteNaoEncontradaException, EnqueteAtivaException {
+	this.repository.delete(id);
+    }
 
-	@POST
-	@Path("{id}/voto")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void vote(@PathParam("id") Long id, Opcao opcao)
-			throws EnqueteNaoEncontradaException, EnqueteInativaException,
-			OpcaoNaoEncontradaException {
-		this.repository.find(id).findOpcaoToVote(opcao.getTexto()).vote();
-	}
+    @POST
+    @Path("{id}/voto")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void vote(@PathParam("id") Long id, Opcao opcao)
+	    throws EnqueteNaoEncontradaException, EnqueteInativaException,
+	    OpcaoNaoEncontradaException {
+	this.repository.find(id).findOpcaoToVote(opcao.getTexto()).vote();
+    }
 }

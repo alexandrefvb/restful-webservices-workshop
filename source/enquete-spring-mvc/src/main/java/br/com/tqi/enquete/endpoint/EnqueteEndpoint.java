@@ -25,60 +25,60 @@ import br.com.tqi.enquete.resource.EnquetesResource;
 @RequestMapping(EnqueteResource.URI)
 public class EnqueteEndpoint {
 
-	private EnqueteRepository repository = EnqueteRepository.getInstance();
+    private EnqueteRepository repository = EnqueteRepository.getInstance();
 
-	@RequestMapping(method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public EnquetesResource findAll() {
-		return new EnquetesResource(this.repository.findAll());
-	}
+    @RequestMapping(method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+    public EnquetesResource findAll() {
+	return new EnquetesResource(this.repository.findAll());
+    }
 
-	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
-	@ResponseStatus(HttpStatus.CREATED)
-	public EnqueteResource create(@RequestBody Enquete enquete)
-			throws EnqueteInvalidaException {
-		this.repository.create(enquete);
-		return new EnqueteResource(enquete);
-	}
+    @RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+    @ResponseStatus(HttpStatus.CREATED)
+    public EnqueteResource create(@RequestBody Enquete enquete)
+	    throws EnqueteInvalidaException {
+	this.repository.create(enquete);
+	return new EnqueteResource(enquete);
+    }
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public EnqueteResource get(@PathVariable("id") Long id)
-			throws EnqueteNaoEncontradaException {
-		return new EnqueteResource(this.repository.find(id));
-	}
+    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+    public EnqueteResource get(@PathVariable("id") Long id)
+	    throws EnqueteNaoEncontradaException {
+	return new EnqueteResource(this.repository.find(id));
+    }
 
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Long id)
-			throws EnqueteNaoEncontradaException, EnqueteAtivaException {
-		this.repository.delete(id);
-	}
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") Long id)
+	    throws EnqueteNaoEncontradaException, EnqueteAtivaException {
+	this.repository.delete(id);
+    }
 
-	@RequestMapping(value = "{id}/voto", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void vote(@PathVariable("id") Long id, @RequestBody Opcao opcao)
-			throws EnqueteNaoEncontradaException, EnqueteInativaException,
-			OpcaoNaoEncontradaException {
-		this.repository.find(id).findOpcaoToVote(opcao.getTexto()).vote();
-	}
+    @RequestMapping(value = "{id}/voto", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void vote(@PathVariable("id") Long id, @RequestBody Opcao opcao)
+	    throws EnqueteNaoEncontradaException, EnqueteInativaException,
+	    OpcaoNaoEncontradaException {
+	this.repository.find(id).findOpcaoToVote(opcao.getTexto()).vote();
+    }
 
-	@ExceptionHandler({ EnqueteInvalidaException.class,
-			OpcaoNaoEncontradaException.class })
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public String badRequestExceptionHandler(Exception e) {
-		return e.getMessage();
-	}
+    @ExceptionHandler({ EnqueteInvalidaException.class,
+	    OpcaoNaoEncontradaException.class })
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String badRequestExceptionHandler(Exception e) {
+	return e.getMessage();
+    }
 
-	@ExceptionHandler({ EnqueteNaoEncontradaException.class })
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String notFoundExceptionHandler(Exception e) {
-		return e.getMessage();
-	}
+    @ExceptionHandler({ EnqueteNaoEncontradaException.class })
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String notFoundExceptionHandler(Exception e) {
+	return e.getMessage();
+    }
 
-	@ExceptionHandler({ EnqueteAtivaException.class,
-			EnqueteInativaException.class })
-	@ResponseStatus(HttpStatus.CONFLICT)
-	public String conflictExceptionHandler(Exception e) {
-		return e.getMessage();
-	}
+    @ExceptionHandler({ EnqueteAtivaException.class,
+	    EnqueteInativaException.class })
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public String conflictExceptionHandler(Exception e) {
+	return e.getMessage();
+    }
 
 }

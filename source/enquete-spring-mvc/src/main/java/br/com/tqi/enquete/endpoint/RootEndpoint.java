@@ -10,8 +10,8 @@ import br.com.tqi.enquete.resource.RootResource;
 @RequestMapping(RootResource.URI)
 public class RootEndpoint {
 
-	@RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-	public RootResource get() {
-		return new RootResource();
-	}
+    @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
+    public RootResource get() {
+	return new RootResource();
+    }
 }

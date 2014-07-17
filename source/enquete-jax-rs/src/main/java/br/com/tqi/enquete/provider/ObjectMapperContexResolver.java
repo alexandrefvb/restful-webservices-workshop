@@ -10,21 +10,21 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Provider
 public class ObjectMapperContexResolver implements
-		ContextResolver<ObjectMapper> {
+	ContextResolver<ObjectMapper> {
 
-	private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
-	public ObjectMapperContexResolver() {
-		this.objectMapper = new ObjectMapper();
-		this.objectMapper.configure(
-				SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-		this.objectMapper.setDateFormat(new SimpleDateFormat(
-				"dd/MM/yyyy HH:mm:ss"));
-	}
+    public ObjectMapperContexResolver() {
+	this.objectMapper = new ObjectMapper();
+	this.objectMapper.configure(
+		SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+	this.objectMapper.setDateFormat(new SimpleDateFormat(
+		"dd/MM/yyyy HH:mm:ss"));
+    }
 
-	@Override
-	public ObjectMapper getContext(Class<?> objectType) {
-		return this.objectMapper;
-	}
+    @Override
+    public ObjectMapper getContext(Class<?> objectType) {
+	return this.objectMapper;
+    }
 
 }

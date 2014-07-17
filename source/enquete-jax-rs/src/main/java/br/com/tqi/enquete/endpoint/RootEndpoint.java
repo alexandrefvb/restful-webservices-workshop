@@ -10,9 +10,9 @@ import br.com.tqi.enquete.resource.RootResource;
 @Path(RootResource.URI)
 public class RootEndpoint {
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public RootResource get() {
-		return new RootResource();
-	}
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public RootResource get() {
+	return new RootResource();
+    }
 }
